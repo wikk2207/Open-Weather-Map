@@ -1,0 +1,5 @@
+.ff-humidity::before { content: '\e800'; }
+.ff-sunrise::before { content: '\e801'; }
+.ff-sun::before { content: '\e802'; }
+.ff-moon::before { content: '\e803'; }
+.ff-thermometer::before { content: '\f2c9'; }
