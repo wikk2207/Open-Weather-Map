@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
