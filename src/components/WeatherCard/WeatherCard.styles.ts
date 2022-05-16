@@ -1,10 +1,11 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  background-color: lightblue;
   width: 200px;
   border-radius: 5px;
   padding: 5px;
+  background-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 `
 
 export const DateWrapper = styled.p`

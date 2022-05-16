@@ -1,7 +1,7 @@
 import WeatherCard from 'components/WeatherCard'
 import React, { FC } from 'react'
 import Select, { OnChangeValue } from 'react-select'
-import { Wrapper } from './CityWeather.styles'
+import { Wrapper, WeatherCardsWrapper, selectStyles } from './CityWeather.styles'
 import { DayForecast, Option } from './types'
 
 interface Props {
@@ -23,8 +23,9 @@ const CityWeather: FC<Props> = ({
       value={selectedCity}
       onChange={handleCitySelect}
       isMulti={false}
+      styles={selectStyles}
     />
-    <>
+    <WeatherCardsWrapper>
       {dailyForecast.map(({ tempDay, tempMorning, tempNight, humidity, date }) => (
         <WeatherCard
           tempDay={tempDay}
@@ -34,7 +35,7 @@ const CityWeather: FC<Props> = ({
           date={date}
         />
       ))}
-    </>
+    </WeatherCardsWrapper>
   </Wrapper>
 )
 
