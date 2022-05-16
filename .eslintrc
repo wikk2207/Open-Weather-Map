@@ -6,11 +6,11 @@
         "eslint:recommended",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:prettier/recommended",
         "plugin:storybook/recommended",
         "plugin:import/errors",
         "plugin:import/warnings",
-        "plugin:import/typescript"
+        "plugin:import/typescript",
+        "plugin:prettier/recommended"
     ],
     "settings": {
         "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
