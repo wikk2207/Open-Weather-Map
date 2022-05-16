@@ -6,7 +6,11 @@
         "eslint:recommended",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:prettier/recommended"
+        "plugin:prettier/recommended",
+        "plugin:storybook/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript"
     ],
     "settings": {
         "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
@@ -15,12 +19,36 @@
         },
         "import/resolver": {
             "node": {
-                "extensions": [".js", ".jsx", ".ts", ".tsx"]
+                "extensions": [".js", ".jsx", ".ts", ".tsx"],
+                "moduleDirectory": ["node_modules", "src/"]
             }
         }
     },
     "rules": {
         "semi": [2, "never"],
-        "react/jsx-filename-extension": [1, { "allow": "as-needed" }]
+        "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+        "react/jsx-props-no-spreading": "off",
+        "import/extensions": "off",
+        "react/require-default-props": "off",
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+              "devDependencies": [
+                "**/*.stories.*",
+                "**/.storybook/**/*.*"
+              ],
+              "peerDependencies": true
+            }
+        ],
+        "react/function-component-definition": [
+            2,
+            {
+                "namedComponents": "arrow-function",
+                "unnamedComponents": "arrow-function"
+            }
+        ],
+        "import/prefer-default-export": "off",
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": ["error"]
     }
 }
