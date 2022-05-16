@@ -1,0 +1,3 @@
+import ForecastImportModalContainer from './ForecastDetailsModalContainer'
+
+export default ForecastImportModalContainer

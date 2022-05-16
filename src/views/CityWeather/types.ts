@@ -1,4 +1,4 @@
-export interface ForecastApiResponse {
+export interface IForecastApiResponse {
   hourly: {
     dt: number
     temp: number
@@ -18,12 +18,12 @@ export interface ForecastApiResponse {
   }[]
 }
 
-export interface Option {
+export interface IOption {
   label: string
   value: string
 }
 
-export interface DayForecast {
+export interface IDayForecast {
   date: Date
   min: number
   max: number
@@ -31,7 +31,11 @@ export interface DayForecast {
   tempDay: number
   tempNight: number
   humidity: number
-  hourlyForecast: {
+}
+
+export interface ISelectedDayForecast {
+  date: Date
+  hourly?: {
     temp: number
     humidity: number
   }[]

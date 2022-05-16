@@ -1,6 +1,6 @@
-import Select, { StylesConfig } from 'react-select'
+import { StylesConfig } from 'react-select'
 import styled from 'styled-components'
-import { Option } from './types'
+import { IOption } from './types'
 
 export const Wrapper = styled.div`
   min-height: 100vh;
@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: lightskyblue;
+  background-color: ${({ theme }) => theme.colors.background};
 `
 export const WeatherCardsWrapper = styled.div`
   display: flex;
@@ -17,12 +17,12 @@ export const WeatherCardsWrapper = styled.div`
   gap: 2rem;
 `
 
-export const selectStyles: StylesConfig<Option, false> = {
-  container: (provided, state) => ({
+export const selectStyles: StylesConfig<IOption, false> = {
+  container: provided => ({
     ...provided,
     marginBottom: 50
   }),
-  control: (provided, state) => ({
+  control: provided => ({
     ...provided,
     width: 200,
     boxShadow: '2px 2px 5px rgba(0, 0, 0, 0.1)'

@@ -1,21 +1,34 @@
-import WeatherCard from 'components/WeatherCard'
 import React, { FC } from 'react'
+import { IconButton } from '@mui/material'
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
+import WeatherCard from 'components/WeatherCard'
 import Select, { OnChangeValue } from 'react-select'
 import { Wrapper, WeatherCardsWrapper, selectStyles } from './CityWeather.styles'
-import { DayForecast, Option } from './types'
+import { IDayForecast, IOption, ISelectedDayForecast } from './types'
+import ForecastImportModalContainer from './ForecastDetailsModal'
 
 interface Props {
-  citiesOptions: Option[]
-  selectedCity: Option
-  handleCitySelect: (city: OnChangeValue<Option, false>) => void
-  dailyForecast: DayForecast[]
+  citiesOptions: IOption[]
+  selectedCity: IOption
+  handleCitySelect: (city: OnChangeValue<IOption, false>) => void
+  dailyForecast: IDayForecast[]
+  isLoading: boolean
+  openModal: (day: Date) => void
+  closeModal: () => void
+  isModalOpen: boolean
+  selectedDayForecast?: ISelectedDayForecast
 }
 
 const CityWeather: FC<Props> = ({
   citiesOptions,
   selectedCity,
   handleCitySelect,
-  dailyForecast
+  dailyForecast,
+  isLoading,
+  openModal,
+  closeModal,
+  isModalOpen,
+  selectedDayForecast
 }) => (
   <Wrapper>
     <Select
@@ -25,17 +38,32 @@ const CityWeather: FC<Props> = ({
       isMulti={false}
       styles={selectStyles}
     />
-    <WeatherCardsWrapper>
-      {dailyForecast.map(({ tempDay, tempMorning, tempNight, humidity, date }) => (
-        <WeatherCard
-          tempDay={tempDay}
-          tempMorning={tempMorning}
-          tempNight={tempNight}
-          humidity={humidity}
-          date={date}
-        />
-      ))}
-    </WeatherCardsWrapper>
+    {isLoading ? (
+      <>Loading ...</>
+    ) : (
+      <WeatherCardsWrapper>
+        {dailyForecast.map(({ tempDay, tempMorning, tempNight, humidity, date }) => (
+          <WeatherCard
+            key={date.getTime()}
+            tempDay={tempDay}
+            tempMorning={tempMorning}
+            tempNight={tempNight}
+            humidity={humidity}
+            date={date}
+            additionalHeaderComponent={
+              <IconButton onClick={() => openModal(date)}>
+                <MoreHorizIcon />
+              </IconButton>
+            }
+          />
+        ))}
+      </WeatherCardsWrapper>
+    )}
+    <ForecastImportModalContainer
+      isOpen={isModalOpen}
+      handleClose={closeModal}
+      selectedDayForecast={selectedDayForecast}
+    />
   </Wrapper>
 )
 
