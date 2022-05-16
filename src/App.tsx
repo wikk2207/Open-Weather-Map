@@ -1,9 +1,11 @@
-import React from 'react'
-import CityWeatherContainer from './views/CityWeather'
+import React, { FC } from 'react'
+import GlobalStyle from 'styles/GlobalStyle'
+import CityWeatherContainer from 'views/CityWeather'
 
-function App() {
+const App: FC = () => {
   return (
     <div className="App">
+      <GlobalStyle />
       <CityWeatherContainer />
     </div>
   )
