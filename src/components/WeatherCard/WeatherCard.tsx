@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import moment from 'moment'
+import { useTranslation } from 'react-i18next'
 import IconWithValue from 'components/IconWithValue'
 import { IconClassName } from 'styles/icons'
 import { Unit } from 'utils/constants'
@@ -21,41 +22,45 @@ const WeatherCard: FC<Props> = ({
   tempNight,
   humidity,
   additionalHeaderComponent
-}) => (
-  <Wrapper>
-    <Header>
-      <>
-        {`${moment(date).format('dddd, Do MMM')}`}
-        {additionalHeaderComponent}
-      </>
-    </Header>
-    <ForecastDataWrapper>
-      <IconWithValue
-        icon={IconClassName.Sunrise}
-        value={tempMorning}
-        unit={Unit.DegreeCelsius}
-        label="Morning temperature"
-      />
-      <IconWithValue
-        icon={IconClassName.Sun}
-        value={tempDay}
-        unit={Unit.DegreeCelsius}
-        label="Day temperature"
-      />
-      <IconWithValue
-        icon={IconClassName.Moon}
-        value={tempNight}
-        unit={Unit.DegreeCelsius}
-        label="Night temperature"
-      />
-      <IconWithValue
-        icon={IconClassName.Humidity}
-        value={humidity}
-        unit={Unit.Percent}
-        label="Humidity"
-      />
-    </ForecastDataWrapper>
-  </Wrapper>
-)
+}) => {
+  const { t } = useTranslation()
+
+  return (
+    <Wrapper>
+      <Header>
+        <>
+          {`${moment(date).format('dddd, Do MMM')}`}
+          {additionalHeaderComponent}
+        </>
+      </Header>
+      <ForecastDataWrapper>
+        <IconWithValue
+          icon={IconClassName.Sunrise}
+          value={tempMorning}
+          unit={Unit.DegreeCelsius}
+          label={t('forecast.morningTemp')}
+        />
+        <IconWithValue
+          icon={IconClassName.Sun}
+          value={tempDay}
+          unit={Unit.DegreeCelsius}
+          label={t('forecast.dayTemp')}
+        />
+        <IconWithValue
+          icon={IconClassName.Moon}
+          value={tempNight}
+          unit={Unit.DegreeCelsius}
+          label={t('forecast.nightTemp')}
+        />
+        <IconWithValue
+          icon={IconClassName.Humidity}
+          value={humidity}
+          unit={Unit.Percent}
+          label={t('forecast.humidity')}
+        />
+      </ForecastDataWrapper>
+    </Wrapper>
+  )
+}
 
 export default WeatherCard

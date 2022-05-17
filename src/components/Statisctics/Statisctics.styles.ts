@@ -10,3 +10,14 @@ export const Title = styled.div`
     margin-bottom: 10px;
   }
 `
+
+export const Wrapper = styled.div``
+
+export const Item = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  p:first-of-type {
+    width: 7rem;
+  }
+`
