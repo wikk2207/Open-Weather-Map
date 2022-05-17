@@ -31,3 +31,8 @@ export const Backdrop = styled(BackdropUnstyled)`
   background-color: rgba(0, 0, 0, 0.5);
   -webkit-tap-highlight-color: transparent;
 `
+
+export const Title = styled.h2`
+  width: 100%;
+  text-align: center;
+`

@@ -40,3 +40,10 @@ export interface ISelectedDayForecast {
     humidity: number
   }[]
 }
+
+export interface IStatictics {
+  min: number | null
+  max: number | null
+  mean: number | null
+  mode: number | null
+}

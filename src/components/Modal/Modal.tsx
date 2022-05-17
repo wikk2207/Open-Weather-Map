@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Box } from '@mui/material'
-import { ModalStyled, Backdrop, modalBoxStyle } from './Modal.styles'
+import { ModalStyled, Backdrop, modalBoxStyle, Title } from './Modal.styles'
 
 interface Props {
   isOpen: boolean
@@ -18,7 +18,7 @@ const Modal: FC<Props> = ({ isOpen, handleClose, title, content }) => (
     BackdropComponent={Backdrop}
   >
     <Box sx={modalBoxStyle}>
-      <h2 id="unstyled-modal-title">{title}</h2>
+      <Title id="unstyled-modal-title">{title}</Title>
       {content}
     </Box>
   </ModalStyled>

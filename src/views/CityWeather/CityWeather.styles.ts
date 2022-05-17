@@ -13,8 +13,12 @@ export const Wrapper = styled.div`
 `
 export const WeatherCardsWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 2rem;
+
+  @media only screen and (min-width: 1300px) {
+    flex-direction: row;
+  }
 `
 
 export const selectStyles: StylesConfig<IOption, false> = {
