@@ -7,15 +7,13 @@ import { City, HOURS_IN_DAY } from 'utils/constants'
 import CityWeather from './CityWeather'
 import { IDayForecast, IForecastApiResponse, IOption, ISelectedDayForecast } from './types'
 
-// TODO: move the key to env variables
-const apiKey = 'ed441836d6f84cd983aba36a9dc09cc2'
-
 const defaultCity = {
   label: City.Wroclaw,
   value: City.Wroclaw
 }
 
 const CityWeatherContainer: FC = () => {
+  const apiKey = process.env.REACT_APP_API_KEY
   const [selectedCity, setSelectedCity] = useState<IOption>(defaultCity)
   const [data, setData] = useState<IForecastApiResponse>()
   const [isLoading, setLoading] = useState(false)
